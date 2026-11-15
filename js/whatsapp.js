@@ -1,6 +1,6 @@
 /* === CONFIGURACIÓN DE WHATSAPP === */
 // CAMBIA ESTO POR TU NUMERO (con codigo de pais, sin + ni espacios)
-const WHATSAPP_NUMERO = "573001234567";
+const WHATSAPP_NUMERO = "+5354341857";
 
 function generarLinkWhatsApp(producto, cliente) {
   const total = producto.precioFinal * cliente.cantidad;
