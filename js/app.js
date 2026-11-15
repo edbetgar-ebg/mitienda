@@ -73,7 +73,7 @@ function generarIdPedido() {
 }
 
 /* ============================================================
-   SISTEMA DE ESTADOS VISUALES (rojo / verde / neutro)
+   SISTEMA DE ESTADOS VISUALES
    ============================================================ */
 const ESTADO_CLASES = ["input-ok", "input-error"];
 
@@ -169,9 +169,6 @@ function validarDireccion(valor) {
   return "";
 }
 
-/* ============================================================
-   VALIDAR TODO EL FORMULARIO Y PINTAR ESTADOS
-   ============================================================ */
 function validarFormulario() {
   let ok = true;
 
@@ -208,12 +205,14 @@ function validarFormulario() {
 }
 
 /* ============================================================
-   CARGAR PRODUCTOS
+   CARGAR PRODUCTOS Y CATEGORÍAS
    ============================================================ */
 async function iniciar() {
   try {
     const res = await fetch("productos.json", { cache: "no-store" });
     const raw = await res.json();
+    
+    // 1. Procesar productos
     todosProductos = raw.map((p) => {
       const descuento = calcularDescuento(p.id);
       return {
@@ -223,6 +222,11 @@ async function iniciar() {
         precioOriginal: Math.round(p.precio / (1 - descuento / 100)),
       };
     });
+
+    // 2. Generar los botones de categorías dinámicamente
+    generarBotonesCategorias();
+
+    // 3. Renderizar
     renderizar();
     iniciarAlternanciaBadges();
   } catch (err) {
@@ -230,6 +234,47 @@ async function iniciar() {
     grid.innerHTML =
       '<div class="vacio"><h3>⚠️ Sin productos</h3><p>Ejecuta actualizar.bat</p></div>';
   }
+}
+
+/* === GENERAR CATEGORÍAS DINÁMICAS === */
+function generarBotonesCategorias() {
+  // Obtenemos las categorías únicas del JSON
+  const categorias = [...new Set(todosProductos.map(p => p.categoria))];
+  
+  // Limpiamos los tabs, dejando solo el de "Todos"
+  tabs.innerHTML = '<button class="tab active" data-cat="all">Todos</button>';
+
+  // Diccionario de íconos (si no está en la lista, se pone el genérico 📦)
+  const iconos = {
+    "electrodomesticos": "🔌",
+    "transporte": "🚗",
+    "celulares": "📱",
+    "accesorios": "🎧",
+    "pcylaptops": "💻"
+  };
+
+  categorias.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.className = "tab";
+    btn.dataset.cat = cat;
+    
+    // Formatear nombre: "pcylaptops" -> "Pcylaptops"
+    const nombreBonito = cat.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    const icono = iconos[cat] || "📦";
+    
+    btn.textContent = `${icono} ${nombreBonito}`;
+    tabs.appendChild(btn);
+  });
+
+  // Volver a asignar el evento click a todos los botones
+  tabs.querySelectorAll(".tab").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      tabs.querySelector(".tab.active")?.classList.remove("active");
+      e.target.classList.add("active");
+      categoriaActual = e.target.dataset.cat;
+      renderizar();
+    });
+  });
 }
 
 /* === ALTERNANCIA DE BADGES === */
@@ -407,15 +452,6 @@ clienteMetodo.addEventListener("change", () => {
 });
 
 /* === EVENTOS UI === */
-tabs.addEventListener("click", (e) => {
-  const btn = e.target.closest(".tab");
-  if (!btn) return;
-  tabs.querySelector(".tab.active")?.classList.remove("active");
-  btn.classList.add("active");
-  categoriaActual = btn.dataset.cat;
-  renderizar();
-});
-
 const buscadorDebounced = debounce((val) => {
   textoBusqueda = val;
   renderizar();

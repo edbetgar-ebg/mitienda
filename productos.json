@@ -1,6 +1,36 @@
 [
   {
+    "id": "electrodomesticos-proveedorEdgar-0",
+    "nombre": "Ecoflow",
+    "precio": 500,
+    "proveedor": "proveedorEdgar",
+    "categoria": "electrodomesticos",
+    "descripcion": "classic",
+    "archivo": "proveedorEdgar/ecoflow-500.jpg",
+    "imagen": "img/electrodomesticos/proveedorEdgar/ecoflow-500.jpg"
+  },
+  {
+    "id": "transporte-proveedorEdgar-0",
+    "nombre": "Motorina",
+    "precio": 1000,
+    "proveedor": "proveedorEdgar",
+    "categoria": "transporte",
+    "descripcion": "mishu",
+    "archivo": "proveedorEdgar/motorina-1000.jpg",
+    "imagen": "img/transporte/proveedorEdgar/motorina-1000.jpg"
+  },
+  {
     "id": "celulares-proveedorJuan-0",
+    "nombre": "Ecoflow",
+    "precio": 500,
+    "proveedor": "proveedorJuan",
+    "categoria": "celulares",
+    "descripcion": "classic",
+    "archivo": "proveedorJuan/ecoflow-500.jpg",
+    "imagen": "img/celulares/proveedorJuan/ecoflow-500.jpg"
+  },
+  {
+    "id": "celulares-proveedorJuan-1",
     "nombre": "Iphone 13",
     "precio": 200,
     "proveedor": "proveedorJuan",
@@ -10,7 +40,17 @@
     "imagen": "img/celulares/proveedorJuan/iphone-13-200.jpg"
   },
   {
-    "id": "celulares-proveedorJuan-1",
+    "id": "celulares-proveedorJuan-2",
+    "nombre": "Iphone 14",
+    "precio": 200,
+    "proveedor": "proveedorJuan",
+    "categoria": "celulares",
+    "descripcion": "iPhone 13 de 128GB.\r\nColor azul medianoche.\r\nEstado: como nuevo, 100% funcional.\r\nBatería al 92% de salud.\r\nIncluye caja original y cable de carga.\r\nGarantía de 3 meses por defecto de fábrica.",
+    "archivo": "proveedorJuan/iphone-14-200.jpg",
+    "imagen": "img/celulares/proveedorJuan/iphone-14-200.jpg"
+  },
+  {
+    "id": "celulares-proveedorJuan-3",
     "nombre": "Iphone 15",
     "precio": 200,
     "proveedor": "proveedorJuan",
@@ -21,12 +61,12 @@
   },
   {
     "id": "celulares-proveedorPedro-0",
-    "nombre": "Iphone 14",
+    "nombre": "Iphone 16",
     "precio": 200,
     "proveedor": "proveedorPedro",
     "categoria": "celulares",
     "descripcion": "iPhone 13 de 128GB.\r\nColor azul medianoche.\r\nEstado: como nuevo, 100% funcional.\r\nBatería al 92% de salud.\r\nIncluye caja original y cable de carga.\r\nGarantía de 3 meses por defecto de fábrica.",
-    "archivo": "proveedorPedro/iphone-14-200.jpg",
-    "imagen": "img/celulares/proveedorPedro/iphone-14-200.jpg"
+    "archivo": "proveedorPedro/iphone-16-200.jpg",
+    "imagen": "img/celulares/proveedorPedro/iphone-16-200.jpg"
   }
 ]
