@@ -1,0 +1,32 @@
+[
+  {
+    "id": "celulares-proveedorJuan-0",
+    "nombre": "Iphone 12",
+    "precio": 200,
+    "proveedor": "proveedorJuan",
+    "categoria": "celulares",
+    "descripcion": "iPhone 13 de 128GB.\r\nColor azul medianoche.\r\nEstado: como nuevo, 100% funcional.\r\nBatería al 92% de salud.\r\nIncluye caja original y cable de carga.\r\nGarantía de 3 meses por defecto de fábrica.",
+    "archivo": "proveedorJuan/iphone-12-200.jpg",
+    "imagen": "img/celulares/proveedorJuan/iphone-12-200.jpg"
+  },
+  {
+    "id": "celulares-proveedorJuan-1",
+    "nombre": "Iphone 13",
+    "precio": 200,
+    "proveedor": "proveedorJuan",
+    "categoria": "celulares",
+    "descripcion": "iPhone 13 de 128GB.\r\nColor azul medianoche.\r\nEstado: como nuevo, 100% funcional.\r\nBatería al 92% de salud.\r\nIncluye caja original y cable de carga.\r\nGarantía de 3 meses por defecto de fábrica.",
+    "archivo": "proveedorJuan/iphone-13-200.jpg",
+    "imagen": "img/celulares/proveedorJuan/iphone-13-200.jpg"
+  },
+  {
+    "id": "celulares-proveedorPedro-0",
+    "nombre": "Iphone 14",
+    "precio": 200,
+    "proveedor": "proveedorPedro",
+    "categoria": "celulares",
+    "descripcion": "iPhone 13 de 128GB.\r\nColor azul medianoche.\r\nEstado: como nuevo, 100% funcional.\r\nBatería al 92% de salud.\r\nIncluye caja original y cable de carga.\r\nGarantía de 3 meses por defecto de fábrica.",
+    "archivo": "proveedorPedro/iphone-14-200.jpg",
+    "imagen": "img/celulares/proveedorPedro/iphone-14-200.jpg"
+  }
+]

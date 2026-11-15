@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1f2937" />
+  <meta name="description" content="Tienda online con envíos dentro de Santa Clara, Villa Clara y Cuba. Reserva por WhatsApp." />
+  <title>Mi Tienda | Reserva por WhatsApp</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="logo">🛒 Mi<span>Tienda</span></h1>
+    <p class="tagline">Reserva por WhatsApp</p>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-cat="all">Todos</button>
+    <button class="tab" data-cat="electrodomesticos">🔌 Electro</button>
+    <button class="tab" data-cat="transporte">🚗 Transporte</button>
+    <button class="tab" data-cat="celulares">📱 Celulares</button>
+    <button class="tab" data-cat="accesorios">🎧 Accesorios</button>
+    <button class="tab" data-cat="pcylaptops">💻 PC/Laptops</button>
+  </nav>
+
+  <section class="toolbar">
+    <input type="text" id="buscador" placeholder="🔍 Buscar producto..." autocomplete="off" />
+    <select id="ordenar">
+      <option value="default">Relevancia</option>
+      <option value="precio-asc">Precio ↑</option>
+      <option value="precio-desc">Precio ↓</option>
+      <option value="nombre">Nombre A-Z</option>
+    </select>
+  </section>
+
+  <p class="contador" id="contador"></p>
+
+  <main class="grid" id="grid"></main>
+
+  <!-- MODAL RESERVA -->
+  <div class="modal-overlay" id="modal" aria-hidden="true">
+    <div class="modal">
+      <button class="modal-close" id="cerrarModal" aria-label="Cerrar">✕</button>
+      <h2>Reservar producto</h2>
+      <div class="modal-producto" id="modalProducto"></div>
+
+      <form id="formReserva" novalidate>
+
+        <div class="campo">
+          <span class="error-campo" id="err-nombre"></span>
+          <label for="clienteNombre">Nombre completo</label>
+          <input type="text" id="clienteNombre" placeholder="Ej: Carlos Pérez López" autocomplete="name" />
+        </div>
+
+        <div class="campo">
+          <span class="error-campo" id="err-telefono"></span>
+          <label for="clienteTelefono">Teléfono (8 dígitos)</label>
+          <input type="tel" id="clienteTelefono" placeholder="Ej: 55512345" maxlength="8" inputmode="numeric" autocomplete="tel" />
+        </div>
+
+        <div class="campo">
+          <span class="error-campo" id="err-cantidad"></span>
+          <label for="clienteCantidad">Cantidad</label>
+          <input type="number" id="clienteCantidad" min="1" value="1" inputmode="numeric" />
+        </div>
+
+        <div class="campo">
+          <span class="error-campo" id="err-metodo"></span>
+          <label for="clienteMetodo">Método de entrega</label>
+          <select id="clienteMetodo">
+            <option value="">Selecciona...</option>
+            <option value="domicilio">🛵 Domicilio (contra entrega)</option>
+            <option value="fisica">🏬 Compra física</option>
+          </select>
+        </div>
+
+        <div class="campos-domicilio" id="camposDomicilio" style="display:none">
+          <div class="campo">
+            <span class="error-campo" id="err-carne"></span>
+            <label for="clienteCarne">Carné de identidad (11 dígitos)</label>
+            <input type="text" id="clienteCarne" placeholder="Ej: 98052312345" maxlength="11" inputmode="numeric" />
+          </div>
+          <div class="campo">
+            <span class="error-campo" id="err-direccion"></span>
+            <label for="clienteDireccion">Dirección de entrega</label>
+            <input type="text" id="clienteDireccion"
+                   placeholder="Calle San Miguel #125 entre San Pedro y Toscano Rpto Condado"
+                   autocomplete="street-address" />
+          </div>
+          <p class="aviso-zona">ℹ️ Envíos solo en Santa Clara / Villa Clara / Cuba</p>
+        </div>
+
+        <button type="submit" class="btn-whatsapp">💬 Reservar por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DETALLES -->
+  <div class="modal-overlay" id="modalDetalles" aria-hidden="true">
+    <div class="modal modal-detalles">
+      <button class="modal-close" id="cerrarDetalles" aria-label="Cerrar">✕</button>
+      <h2 id="detalleTitulo">Detalles del producto</h2>
+      <div class="detalle-contenido" id="detalleContenido"></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 MiTienda</p>
+    <p class="footer-aviso">🛵 Envíos en Santa Clara / Villa Clara / Cuba</p>
+  </footer>
+
+  <script src="js/whatsapp.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

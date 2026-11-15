@@ -1,0 +1,537 @@
+/* ============================================================
+   ESTILOS MOBILE-FIRST — Optimizado para Redmi 9A (360×800)
+   ============================================================ */
+
+:root {
+  --primario: #ff6b35;
+  --primario-oscuro: #e85a24;
+  --whatsapp: #25d366;
+  --whatsapp-oscuro: #1da851;
+  --rojo: #ef4444;
+  --verde: #10b981;
+  --fondo: #f8f9fb;
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --blanco: #ffffff;
+  --sombra: 0 2px 10px rgba(0,0,0,.06);
+  --sombra-hover: 0 8px 20px rgba(0,0,0,.12);
+  --radio: 12px;
+  --radio-sm: 8px;
+  --tactil: 44px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+  color: var(--blanco);
+  padding: 20px 16px;
+  text-align: center;
+}
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; }
+.logo span { color: var(--primario); }
+.tagline { color: #9ca3af; font-size: .8rem; margin-top: 2px; }
+
+/* TABS */
+.tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 16px;
+  background: var(--blanco);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  border: 2px solid #e5e7eb;
+  background: var(--blanco);
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .8rem;
+  font-family: inherit;
+  color: var(--texto-suave);
+  transition: background .15s, border-color .15s, color .15s;
+  white-space: nowrap;
+  scroll-snap-align: start;
+  min-height: var(--tactil);
+  display: flex;
+  align-items: center;
+}
+.tab:active { transform: scale(.96); }
+.tab.active {
+  background: var(--primario);
+  border-color: var(--primario);
+  color: var(--blanco);
+  box-shadow: 0 2px 8px rgba(255,107,53,.3);
+}
+
+/* TOOLBAR */
+.toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.toolbar input,
+.toolbar select {
+  padding: 10px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radio-sm);
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  background: var(--blanco);
+  min-height: var(--tactil);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.toolbar input:focus,
+.toolbar select:focus { border-color: var(--primario); }
+.toolbar input { flex: 1; min-width: 0; }
+.toolbar select { flex: 0 0 auto; max-width: 130px; }
+
+/* CONTADOR */
+.contador {
+  text-align: center;
+  color: var(--texto-suave);
+  font-size: .8rem;
+  margin-bottom: 12px;
+  padding: 0 16px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding: 0 12px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* CARDS */
+.card {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  transition: box-shadow .2s;
+  display: flex;
+  flex-direction: column;
+  animation: aparecer .25s ease;
+}
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.card:active { box-shadow: var(--sombra-hover); }
+
+.card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .3s;
+}
+.card:hover .card-img-wrap img { transform: scale(1.04); }
+
+.badge-descuento {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .3px;
+  z-index: 2;
+  text-align: center;
+  white-space: nowrap;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 2px 8px rgba(239,68,68,.35);
+  transition: background .3s ease, box-shadow .3s ease;
+}
+.badge-descuento.mostrar-disponible {
+  background: linear-gradient(135deg, #25d366, #1da851);
+  box-shadow: 0 2px 8px rgba(37,211,102,.35);
+}
+
+.card-body {
+  padding: 10px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+.card-nombre {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--texto);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.4em;
+  line-height: 1.2;
+}
+
+.precios {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.precio-original {
+  color: #9ca3af;
+  font-size: .72rem;
+  text-decoration: line-through;
+}
+.precio-final {
+  color: var(--primario);
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.card-botones {
+  display: flex;
+  gap: 6px;
+  margin-top: auto;
+}
+.btn-detalles {
+  flex: 1;
+  padding: 8px 4px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radio-sm);
+  background: var(--blanco);
+  color: var(--texto-suave);
+  font-weight: 700;
+  font-size: .72rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color .15s, color .15s;
+  min-height: 38px;
+}
+.btn-detalles:active {
+  border-color: var(--primario);
+  color: var(--primario);
+  transform: scale(.96);
+}
+.btn-reservar {
+  flex: 1.2;
+  padding: 8px 4px;
+  border: none;
+  border-radius: var(--radio-sm);
+  background: var(--whatsapp);
+  color: #fff;
+  font-weight: 700;
+  font-size: .72rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background .15s;
+  min-height: 38px;
+}
+.btn-reservar:active {
+  background: var(--whatsapp-oscuro);
+  transform: scale(.96);
+}
+
+/* MODALES */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(3px);
+}
+.modal-overlay.activo { display: flex; }
+
+.modal {
+  background: var(--blanco);
+  border-radius: var(--radio) var(--radio) 0 0;
+  padding: 20px 16px 24px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  animation: modalIn .25s ease;
+  max-height: 92vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--texto-suave);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.modal-close:active { background: #e5e7eb; }
+
+.modal h2 { font-size: 1.1rem; margin-bottom: 10px; padding-right: 40px; }
+.modal-producto {
+  background: #f3f4f6;
+  padding: 10px 12px;
+  border-radius: var(--radio-sm);
+  margin-bottom: 14px;
+  font-size: .85rem;
+  line-height: 1.4;
+}
+.modal-producto strong { color: var(--primario); }
+
+/* ============================================================
+   FORMULARIO
+   ============================================================ */
+#formReserva {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* El error va ARRIBA del label/input, en rojo negrita */
+.error-campo {
+  display: block;
+  color: var(--rojo);
+  font-size: .78rem;
+  font-weight: 700;
+  min-height: 0;
+  line-height: 1.2;
+  order: -1; /* lo pone arriba del label */
+  margin-bottom: 2px;
+  transition: opacity .2s;
+}
+.error-campo:empty {
+  display: none;
+}
+
+.campo label {
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  margin-bottom: 2px;
+}
+
+.campo input,
+.campo select {
+  padding: 12px 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radio-sm);
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  background: var(--blanco);
+  transition: border-color .15s, background .15s, box-shadow .15s;
+  min-height: var(--tactil);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.campo select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%236b7280' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--primario);
+  box-shadow: 0 0 0 3px rgba(255,107,53,.15);
+}
+
+/* === ESTADO OK (verde) === */
+.campo input.input-ok,
+.campo select.input-ok {
+  border-color: var(--verde);
+  background-color: #f0fdf4;
+}
+.campo input.input-ok:focus,
+.campo select.input-ok:focus {
+  box-shadow: 0 0 0 3px rgba(16,185,129,.2);
+}
+
+/* === ESTADO ERROR (rojo) === */
+.campo input.input-error,
+.campo select.input-error {
+  border-color: var(--rojo);
+  background-color: #fef2f2;
+}
+.campo input.input-error:focus,
+.campo select.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(239,68,68,.2);
+}
+
+/* Campos de domicilio */
+.campos-domicilio {
+  background: #f9fafb;
+  border: 2px dashed #e5e7eb;
+  border-radius: var(--radio-sm);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.aviso-zona {
+  font-size: .75rem;
+  color: #1e40af;
+  background: #dbeafe;
+  padding: 8px 10px;
+  border-radius: var(--radio-sm);
+  line-height: 1.3;
+}
+
+.btn-whatsapp {
+  margin-top: 6px;
+  padding: 14px;
+  border: none;
+  border-radius: var(--radio-sm);
+  background: var(--whatsapp);
+  color: #fff;
+  font-weight: 700;
+  font-size: .95rem;
+  font-family: inherit;
+  cursor: pointer;
+  min-height: 48px;
+  transition: background .15s;
+}
+.btn-whatsapp:active { background: var(--whatsapp-oscuro); }
+
+/* MODAL DETALLES */
+.modal-detalles { max-width: 500px; }
+.detalle-contenido {
+  font-size: .9rem;
+  line-height: 1.65;
+  color: var(--texto);
+}
+.detalle-contenido p { margin-bottom: 8px; }
+.detalle-contenido .cargando { color: var(--texto-suave); font-style: italic; }
+.detalle-contenido .sin-detalles {
+  color: var(--texto-suave);
+  font-style: italic;
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* FOOTER */
+.footer {
+  background: #1f2937;
+  color: #9ca3af;
+  text-align: center;
+  padding: 16px;
+  font-size: .75rem;
+}
+.footer-aviso {
+  margin-top: 6px;
+  color: #d1d5db;
+  font-size: .7rem;
+}
+
+/* VACÍO */
+.vacio {
+  text-align: center;
+  padding: 40px 16px;
+  color: var(--texto-suave);
+  grid-column: 1 / -1;
+}
+.vacio h3 { font-size: 1rem; margin-bottom: 6px; }
+
+/* ============================================================
+   TABLET / PC (>= 600px)
+   ============================================================ */
+@media (min-width: 600px) {
+  body { font-size: 16px; }
+  .header { padding: 32px 20px; }
+  .logo { font-size: 2rem; }
+  .tagline { font-size: .9rem; }
+  .tabs { padding: 16px 24px; gap: 10px; }
+  .tab { font-size: .85rem; padding: 10px 18px; }
+  .toolbar { padding: 0 24px 14px; gap: 12px; }
+  .toolbar select { max-width: none; }
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 18px;
+    padding: 0 20px 60px;
+  }
+  .card-nombre { font-size: .95rem; }
+  .precio-final { font-size: 1.15rem; }
+  .btn-detalles, .btn-reservar { font-size: .8rem; padding: 10px; }
+  .modal {
+    border-radius: var(--radio);
+    padding: 28px;
+    max-height: 90vh;
+    margin: auto;
+  }
+  .modal-overlay { align-items: center; }
+  .modal h2 { font-size: 1.3rem; }
+  .modal-producto { font-size: .9rem; }
+  #formReserva {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  #formReserva .campos-domicilio,
+  #formReserva .btn-whatsapp { grid-column: 1 / -1; }
+  .footer { padding: 24px; font-size: .85rem; }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+  .header { padding: 40px 20px; }
+  .logo { font-size: 2.2rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
