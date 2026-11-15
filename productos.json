@@ -20,6 +20,16 @@
     "imagen": "img/transporte/proveedorEdgar/motorina-1000.jpg"
   },
   {
+    "id": "transporte-proveedorEdgar-1",
+    "nombre": "Motorina Otra",
+    "precio": 700,
+    "proveedor": "proveedorEdgar",
+    "categoria": "transporte",
+    "descripcion": "okok",
+    "archivo": "proveedorEdgar/motorina-otra-700.jpg",
+    "imagen": "img/transporte/proveedorEdgar/motorina-otra-700.jpg"
+  },
+  {
     "id": "celulares-proveedorJuan-0",
     "nombre": "Ecoflow",
     "precio": 500,
