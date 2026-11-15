@@ -1,0 +1,25 @@
+{
+  "productos": {},
+  "carrusel": [
+    {
+      "id": "1794769934139",
+      "archivo": "slide-1794769934138.jpg",
+      "visible": true
+    },
+    {
+      "id": "1794769944754",
+      "archivo": "slide-1794769944753.jpg",
+      "visible": true
+    },
+    {
+      "id": "1794769958605",
+      "archivo": "slide-1794769958604.jpg",
+      "visible": true
+    },
+    {
+      "id": "1794769970074",
+      "archivo": "slide-1794769970072.jpg",
+      "visible": true
+    }
+  ]
+}
