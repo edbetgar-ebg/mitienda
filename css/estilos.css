@@ -346,13 +346,11 @@ body {
   font-weight: 700;
   min-height: 0;
   line-height: 1.2;
-  order: -1; /* lo pone arriba del label */
+  order: -1;
   margin-bottom: 2px;
   transition: opacity .2s;
 }
-.error-campo:empty {
-  display: none;
-}
+.error-campo:empty { display: none; }
 
 .campo label {
   font-size: .82rem;

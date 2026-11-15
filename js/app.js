@@ -91,7 +91,6 @@ function aplicarEstado(campo, estado, mensaje) {
     input.classList.add("input-error");
     if (span) span.textContent = mensaje || "";
   } else {
-    // neutro
     if (span) span.textContent = "";
   }
 }
@@ -158,28 +157,11 @@ function validarCarne(valor) {
   return "";
 }
 
-/**
- * Validación de dirección con formato:
- *   "Calle [nombre] #[número] entre [calle1] y [calle2] Rpto [reparto]"
- *
- * Ejemplo válido:
- *   "Calle San Miguel #125 entre San Pedro y Toscano Rpto Condado"
- *
- * Reglas:
- *  - Debe empezar con la palabra "calle" (sin importar mayúsculas).
- *  - Debe contener un "#" seguido de un número.
- *  - Debe contener la palabra "entre".
- *  - Debe contener la palabra "y".
- *  - Debe contener "rpto" o "reparto" (abreviatura o palabra completa).
- *  - Mínimo 20 caracteres en total.
- */
 function validarDireccion(valor) {
   const v = (valor || "").trim();
   if (!v) return "La dirección es obligatoria.";
   if (v.length < 20) return "Dirección muy corta. Usa el formato completo.";
 
-  // Verificar estructura con una sola regex que cubre todos los casos
-  // Ej: "Calle San Miguel #125 entre San Pedro y Toscano Rpto Condado"
   const regex = /^\s*calle\s+.+?\s+#\s*\d+\s+entre\s+.+?\s+y\s+.+?\s+(rpto\.?|reparto)\s+.+$/i;
   if (!regex.test(v)) {
     return "Formato: Calle [nombre] # [número] entre [calle1] y [calle2] Rpto [reparto]";
@@ -193,27 +175,22 @@ function validarDireccion(valor) {
 function validarFormulario() {
   let ok = true;
 
-  // Nombre
   const eN = validarNombre(clienteNombre.value);
   aplicarEstado("nombre", eN ? "error" : "ok", eN);
   if (eN) ok = false;
 
-  // Teléfono
   const eT = validarTelefono(clienteTelefono.value);
   aplicarEstado("telefono", eT ? "error" : "ok", eT);
   if (eT) ok = false;
 
-  // Cantidad
   const eC = validarCantidad(clienteCantidad.value);
   aplicarEstado("cantidad", eC ? "error" : "ok", eC);
   if (eC) ok = false;
 
-  // Método
   const eM = validarMetodo(clienteMetodo.value);
   aplicarEstado("metodo", eM ? "error" : "ok", eM);
   if (eM) ok = false;
 
-  // Carné y dirección (solo si es domicilio)
   if (clienteMetodo.value === "domicilio") {
     const eK = validarCarne(clienteCarne.value);
     aplicarEstado("carne", eK ? "error" : "ok", eK);
@@ -393,12 +370,11 @@ function cerrarDetalles() {
 }
 
 /* ============================================================
-   VALIDACIÓN EN VIVO — cada campo se valida mientras se escribe
+   VALIDACIÓN EN VIVO
    ============================================================ */
 function configurarValidacionViva(input, funcionValidadora, nombreCampo) {
   const run = () => {
     const valor = input.value;
-    // Si está vacío, dejar neutro (no rojo todavía)
     if (!valor || valor.trim() === "") {
       aplicarEstado(nombreCampo, "neutro");
       return;
@@ -406,9 +382,7 @@ function configurarValidacionViva(input, funcionValidadora, nombreCampo) {
     const err = funcionValidadora(valor);
     aplicarEstado(nombreCampo, err ? "error" : "ok", err);
   };
-
   const debounced = debounce(run, DEBOUNCE_VALIDACION);
-
   input.addEventListener("input", debounced);
   input.addEventListener("blur", run);
 }
@@ -419,14 +393,11 @@ configurarValidacionViva(clienteCantidad, validarCantidad, "cantidad");
 configurarValidacionViva(clienteCarne, validarCarne, "carne");
 configurarValidacionViva(clienteDireccion, validarDireccion, "direccion");
 
-/* Método: validar al cambiar */
 clienteMetodo.addEventListener("change", () => {
   const esDomicilio = clienteMetodo.value === "domicilio";
   camposDomicilio.style.display = esDomicilio ? "block" : "none";
-
   const err = validarMetodo(clienteMetodo.value);
   aplicarEstado("metodo", err ? "error" : "ok", err);
-
   if (!esDomicilio) {
     clienteCarne.value = "";
     clienteDireccion.value = "";
